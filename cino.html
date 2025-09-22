@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Film-Auswahl Ergebnis</title>
+  <style>
+    .aktion { color: red; }
+    .komödie { color: green; }
+    .drama { color: blue; }
+    .horror { color: purple; }
+    .fehler { color: gray; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1 id="ergebnis1"></h1>
+  <h2 id="ergebnis2"></h2>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const benutzername = params.get('benutzername');
+    const film1 = params.get('film1');
+    const film2 = params.get('film2');
+
+    let klasse1 = "";
+    let klasse2 = "";
+
+    switch(film1){
+      case 'Aktion': klasse1 = 'aktion'; break;
+      case 'Komödie': klasse1 = 'komödie'; break;
+      case 'Drama': klasse1 = 'drama'; break;
+      default: klasse1 = "fehler";
+    }
+
+    if(film2 === "Horror"){
+      klasse2 = "horror";
+    } else if(film2 === "Drama"){
+      klasse2 = "drama";
+    } else if(film2 === "Komödie"){
+      klasse2 = "komödie";
+    } else if(film2 === "Aktion"){
+      klasse2 = "aktion";
+    } else {
+      klasse2 = "fehler";
+    }
+
+    window.onload = () => {
+      document.getElementById("ergebnis1").innerHTML =
+        benutzername + " hat " + film1 + " gewählt";
+      document.getElementById("ergebnis1").className = klasse1;
+
+      document.getElementById("ergebnis2").innerHTML =
+        "Außerdem hat er " + film2 + " gewählt";
+      document.getElementById("ergebnis2").className = klasse2;
+    }
+  </script>
+</body>
+</html>

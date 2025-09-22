@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Film-Auswahl</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" 
+    integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" 
+    crossorigin="anonymous">
+  <style>
+    body {
+      margin: 30px;
+      font-family: Arial, sans-serif;
+    }
+    .error {
+      border: 2px solid red;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .form-container {
+      max-width: 400px;
+    }
+  </style>
+  <script>
+    this.onload = () => {
+      const myForm = document.querySelector('#myForm');
+      const usernameInput = document.querySelector('#benutzername');
+
+      myForm.onsubmit = () => {
+        if (usernameInput.value === "") {
+          usernameInput.classList.add('error');
+          alert("Bitte gib deinen Namen ein!");
+          return false;
+        }
+        return true;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Beste Filme</h1>
+  <div class="form-container">
+    <form id="myForm" class="pure-form pure-form-stacked" action="cino.html" method="get">
+      <label for="benutzername">Dein Name:</label>
+      <input id="benutzername" type="text" name="benutzername" class="pure-input-1">
+
+      <fieldset>
+        <legend>Erste Wahl:</legend>
+        <label class="pure-radio">
+          <input type="radio" name="film1" value="Aktion"> Aktion
+        </label>
+        <label class="pure-radio">
+          <input type="radio" name="film1" value="Komödie"> Komödie
+        </label>
+        <label class="pure-radio">
+          <input type="radio" name="film1" value="Drama"> Drama
+        </label>
+      </fieldset>
+
+      <label for="film2">Zweite Wahl:</label>
+      <select id="film2" name="film2" class="pure-input-1">
+        <option value="Aktion">Aktion</option>
+        <option value="Komödie">Komödie</option>
+        <option value="Drama">Drama</option>
+        <option value="Horror">Horror</option>
+      </select>
+
+      <br>
+      <button type="submit" class="pure-button pure-button-primary">Abschicken</button>
+    </form>
+  </div>
+</body>
+</html>
